@@ -1,0 +1,97 @@
+h1 {
+	background-color: #990000;
+	color:white;
+	text-align: center;
+	margin:0em;
+	padding:1em;
+}
+
+footer {
+	background-color: #cccccc;
+	padding: 10px;
+	text-align: center;
+}
+
+footer a {
+	padding: 20px;
+}
+
+
+.pure-menu{
+	text-align:center;
+	padding:1%;
+	/*background-color:#cccccc;*/
+	color:white;
+}
+
+.clicked-button {
+	background-color: #6D6D6D;
+}
+
+.compound-button {
+	font-size: 82%;
+	width: 40px;
+}
+
+.structure-button {
+	font-size: 15px;
+	margin: 12px;
+	width: 130px;
+}
+
+
+table.pure-table {
+    /* width: 100%; */ /* Optional */
+    /* border-collapse: collapse; */
+    border-spacing: 0;
+    border: 2px solid black;
+	margin: 1em;
+	display: inline-block;
+
+}
+
+table.pure-table tbody {
+	height:400px
+}
+
+table.controller tbody {
+	height:400px
+}
+
+table.compound-table tbody {
+	height:400px
+}
+
+table.scroll tbody,
+table.scroll thead { display: block; }
+
+thead tr th { 
+    height: 30px;
+    line-height: 30px;
+    /* text-align: left; */
+}
+
+table.scroll tbody {
+ 
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+tbody { 
+	border-top: 2px solid black;
+	
+ }
+
+tbody td, thead th {
+    /* width: 20%; */ /* Optional */
+    border-right: 1px solid black;
+    /* white-space: nowrap; */
+}
+
+tbody td:last-child, thead th:last-child {
+    border-right: none;
+}
+
+/*div.control-tables  table {
+	height: 400px;
+}*/

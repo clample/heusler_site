@@ -1,0 +1,29 @@
+-The idea of this website is to provide access to our data in a user friendly way.
+-It would be possible to just have this information in a large, 1000 row table but that wouldn't make the information as ....
+	+ easily searchable
+	+ also, we can know make more detailed information available (how the information was obtained)
+	+ we can link to outside information and incorporate that with our data ( we're working to integrate information on stability against other compounds from OQMD)
+	+ by giving each material a page, we can have band plots and density of states graphs
+	---------------------------Add more benefits of a full website over just publishing a large table----------------------
+-By publishing the information on our own website we have full control over what information is displayed and how it is displayed
+
+
+-Home Page:
+	+ contains overview of what the database offers
+	+ guides the user to what they want to see next (begin searching or see technical details)
+	+ in the footer we contain information to comply with the universities requirements (a link back to ua's main website, disclaimer, and a contact form)
+ 
+-Search index
+	------------height of structure in search results is off.
+	------------padding doesn't work that well
+	------------vertical bars don't continue down if there are no results
+	+ makes it simple to look through available materials
+	+ filter by elements composing the compound
+	+ important material information is available in the table while searching
+
+-Material page
+	+ contains all detailed information on each material
+	+ Contains density of states graph and band structure plot
+	+ we've talked to oqmd about adding a stability check against their materials
+
+------------Get consistent titles. Have icon image----------------

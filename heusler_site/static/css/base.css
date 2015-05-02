@@ -1,0 +1,41 @@
+h1 {
+	background-color: #990000;
+	color:white;
+	text-align: center;
+	margin:0em;
+	padding:1em;
+}
+
+img {
+	margin: 30px;
+}
+
+li {
+	margin: 10px;
+}
+
+footer {
+	background-color: #cccccc;
+	padding: 10px;
+	text-align: center;
+}
+
+footer a {
+	padding: 20px;
+}
+
+
+.pure-menu{
+	text-align:center;
+	padding:1%;
+	/*background-color:#cccccc;*/
+	color:white;
+}
+
+h3 {
+	margin-left:30px;
+}
+
+ul {
+	margin-left:30px
+}

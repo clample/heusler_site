@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+	<head>
+		<title>Heusler Database</title>
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+		<link rel="stylesheet" href="{% static "css/index.css" %}" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		
+	</head>
+	
+	<body>
+		<h1>The University of Alabama Heusler Database</h1>
+		<div class="pure-menu pure-menu-horizontal">
+			<ul class="pure-menu-list">
+				<li class="pure-menu-item"><a href="/heuslers/" class="pure-menu-link">Home</a></li>
+				<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+					<a href="#" class="pure-menu-link">About</a>
+					<ul class="pure-menu-children">
+						<li class="pure-menu-item"><a href="#" class="pure-menu-link">Methodology</a></li>
+						<li class="pure-menu-item"><a href="#" class="pure-menu-link">MINT</a></li>
+					</ul>
+				</li>
+				<li class="pure-menu-item"><a href="#" class="pure-menu-link">Search</a></li>
+			</ul>
+		</div>
+		
+		<table class="pure-table compound-table">
+		<thead>
+		<tr><th>A element</th><th>B element</th><th>C element</th></tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><button id="0Sc" onclick="compoundSearch(0,'Sc')" class="pure-button compound-button">Sc</button></td>
+			<td><button id="1Sc" onclick="compoundSearch(1,'Sc')" class="pure-button compound-button">Sc</button></td>
+			<td><button id="2Al" onclick="compoundSearch(2,'Al')" class="pure-button compound-button">Al</button></td>
+		</tr>
+		<tr>
+			<td><button id="0Ti" onclick="compoundSearch(0,'Ti')" class="pure-button compound-button">Ti</button></td>
+			<td><button id="1Ti" onclick="compoundSearch(1,'Ti')" class="pure-button compound-button">Ti</button></td>
+			<td><button id="2Ga" onclick="compoundSearch(2,'Ga')" class="pure-button compound-button">Ga</button></td>
+		</tr>
+		<tr>
+			<td><button id="0V" onclick="compoundSearch(0,'V')" class="pure-button compound-button">V</button></td>
+			<td><button id="1V" onclick="compoundSearch(1,'V')" class="pure-button compound-button">V</button></td>
+			<td><button id="2In" onclick="compoundSearch(2,'In')" class="pure-button compound-button">In</button></td>
+		</tr>
+		<tr>
+			<td><button id="0Cr" onclick="compoundSearch(0,'Cr')" class="pure-button compound-button">Cr</button></td>
+			<td><button id="1Cr" onclick="compoundSearch(1,'Cr')" class="pure-button compound-button">Cr</button></td>
+			<td><button id="2Si" onclick="compoundSearch(2,'Si')" class="pure-button compound-button">Si</button></td>
+		</tr>
+		<tr>
+			<td><button id="0Mn" onclick="compoundSearch(0,'Mn')" class="pure-button compound-button">Mn</button></td>
+			<td><button id="1Mn" onclick="compoundSearch(1,'Mn')" class="pure-button compound-button">Mn</button></td>
+			<td><button id="2Ge" onclick="compoundSearch(2,'Ge')" class="pure-button compound-button">Ge</button></td>
+		</tr>
+		<tr>
+			<td><button id="0Fe" onclick="compoundSearch(0,'Fe')" class="pure-button compound-button">Fe</button></td>
+			<td><button id="1Fe" onclick="compoundSearch(1,'Fe')" class="pure-button compound-button">Fe</button></td>
+			<td><button id="2Sn" onclick="compoundSearch(2,'Sn')" class="pure-button compound-button">Sn</button></td>
+		</tr>
+		<tr>
+			<td><button id="0Co" onclick="compoundSearch(0,'Co')" class="pure-button compound-button">Co</button></td>
+			<td><button id="1Co" onclick="compoundSearch(1,'Co')" class="pure-button compound-button">Co</button></td>
+			<td><button id="2P" onclick="compoundSearch(2,'P')" class="pure-button compound-button">P</button></td>
+		</tr>
+		<tr>
+			<td><button id="0Ni" onclick="compoundSearch(0,'Ni')" class="pure-button compound-button">Ni</button></td>
+			<td><button id="1Ni" onclick="compoundSearch(1,'Ni')" class="pure-button compound-button">Ni</button></td>
+			<td><button id="2As" onclick="compoundSearch(2,'As')" class="pure-button compound-button">As</button></td>
+		</tr>
+		<tr>
+			<td><button id="0Cu" onclick="compoundSearch(0,'Cu')" class="pure-button compound-button">Cu</button></td>
+			<td><button id="1Cu" onclick="compoundSearch(1,'Cu')" class="pure-button compound-button">Cu</button></td>
+			<td><button id="2Sb" onclick="compoundSearch(2,'Sb')" class="pure-button compound-button">Sb</button></td>
+		</tr>
+		</tbody>
+		</table>
+		
+		<table class="pure-table controller">
+		<thead><tr><th>Choices</th></tr></thead>
+		<tbody>
+			<tr><td><button id="FullHeusler" onclick="structureSearch('L21')" class="pure-button structure-button">Full Heusler</button></td></tr>
+			<tr><td><button id="HalfHeusler" onclick="structureSearch('C1B')" class="pure-button structure-button">Half Heusler</button></td></tr>
+			<tr><td><button id="InverseHeusler" onclick="structureSearch('Xa')" class="pure-button structure-button">Inverse Heusler</button></td></tr>
+			<tr><td><button id="stable" onclick="stableSearch()" class="pure-button structure-button">Stable</button></td></tr>
+		</table>
+		
+		
+		<table class="scroll pure-table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Structure</th>
+				<th>Formation Energy</th>
+				<th>Moment</th>
+			</tr>
+		<thead>
+		<tbody id="searchTable">
+		
+		</tbody>
+		</table>
+		<footer><a href="http://www.ua.edu">University of Alabama</a><a href="http://www.mint.ua.edu">MINT</a><a href="http://www.ua.edu/disclaimer.html">Disclaimer</a><a href="/heuslers/contact/">Contact</a></footer>
+
+	<script type="text/javascript">
+		//To-Do
+		//Get clicked-button to disappear faster!
+		
+		
+		
+		//render the information from django server
+		var data_from_django = (("{{js_data}}").replace(/&(l|g|quo)t;/g, function(a,b){
+			return {
+				l : '<',
+				g : '>',
+				quo: '"'
+			}[b];
+		}));
+		var data_from_django = data_from_django.replace("{{","{");
+		var data_from_django = data_from_django.replace("}}","}");
+		
+		console.log(data_from_django)
+		var data_from_django = JSON.parse(data_from_django);
+		
+		console.log(data_from_django)
+		console.log(data_from_django[0])
+		
+		var mytable = "<table><tbody>";
+		for(var i=0; i < data_from_django.length; i++) {
+			writeCompound(data_from_django[i])
+		}
+		
+		function formatNumber(number, precision) {
+			if (number.charAt(0) == "-") {
+				return number.substring(0, precision+1)
+			} else {
+				return number.substring(0, precision)
+			}
+		}
+		
+		function padString(word) {
+			return word//("                         " + word).slice(-10)
+		}
+		
+		function writeCompound(compoundObject) {
+			//writes a compound to the page
+			document.getElementById('searchTable').innerHTML += '<tr><td><a href="/heuslers/material/'+ compoundObject.ident + '">'+ padString(compoundObject.name) + '</a></td><td>'+ "&nbsp; &nbsp; &nbsp; " + padString(compoundObject.structure) + "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; " +'</td><td>'+ "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; " + padString(formatNumber(compoundObject.formationEnergy, 7)) +'</td><td>'+ padString(formatNumber(compoundObject.magneticMoment, 7)) +'</td></tr>'; 
+		}
+		
+		
+		function clearCompounds() {
+			//removes all compounds from the page
+			var myNode = document.getElementById('searchTable');
+			while (myNode.firstChild) {
+				myNode.removeChild(myNode.firstChild);
+			}
+		}
+		
+		var clickedButtons = ["","",""]; //stores the compound buttons which are clicked
+		
+		function compoundSearch(index, element) {
+			//index is 0, 1, 2 indicating a search
+			//of the A, B, or C atom respectively.
+			clearCompounds();
+			
+			if (clickedButtons[index] == element) {
+				//the button was already clicked so we unclick it
+				document.getElementById(index.toString() + clickedButtons[index]).className =
+					document.getElementById(index.toString() + clickedButtons[index]).className.replace( /(?:^|\s)clicked-button(?!\S)/g , '' )
+				clickedButtons[index] = "";
+			} else {
+				//a new button was clicked
+				if (clickedButtons[index] != "") {
+					document.getElementById(index.toString() + clickedButtons[index]).className =
+					document.getElementById(index.toString() + clickedButtons[index]).className.replace( /(?:^|\s)clicked-button(?!\S)/g , '' )
+				}
+				clickedButtons[index] = element;
+				document.getElementById(index.toString() + element).className += " clicked-button"
+			}
+			
+			getResults()
+		}
+		
+		function getResults() {
+			for(var i=0; i < data_from_django.length; i++) {
+				compoundMatches = false;
+				
+				for(var j=0; j < clickedStructures.length;j++) {
+					if (clickedStructures[j] != "") {
+						if (data_from_django[i].structure == clickedStructures[j])
+							compoundMatches = true;
+					}
+				}
+				if (clickedStructures[0] == "" && clickedStructures[1] == "" && clickedStructures[2] == "") {
+					compoundMatches = true;
+					
+				}
+				
+				for(var j=0; j < clickedButtons.length; j++) {
+					if (clickedButtons[j] != "") {
+						console.log(data_from_django[i])
+						console.log("Initial Compound matches: " + compoundMatches)
+						switch(j) {
+							case 0:
+								if (data_from_django[i].Aelement != clickedButtons[j]) {
+									compoundMatches = false;
+									console.log("A-element: " + data_from_django[i].Aelement)
+									
+								}
+								break;
+							case 1:
+								if (data_from_django[i].Belement != clickedButtons[j]) {
+									compoundMatches = false;
+								}
+								break;
+							case 2:
+								if (data_from_django[i].Celement != clickedButtons[j]) {
+									compoundMatches = false;
+								}
+								break;
+						}
+					}
+				}
+				
+				if (stableClicked && (data_from_django[i].stable == "False")) {
+					compoundMatches = false;
+				}
+				
+				if (compoundMatches) {
+					writeCompound(data_from_django[i])
+				}
+			}
+		}
+		
+		var clickedStructures = ["","",""]; //stores the structure buttons which are clicked
+		
+		function structureSearch(structure) {
+			clearCompounds();
+			
+			if ((structure == "L21") && (clickedStructures[0] == "L21")){
+				
+				clickedStructures[0] = "";
+				document.getElementById("FullHeusler").className =
+				document.getElementById("FullHeusler").className.replace( /(?:^|\s)clicked-button(?!\S)/g , '' )
+			} else if (structure == "L21" && clickedStructures[0] == "") {
+				clickedStructures[0] = "L21";
+				document.getElementById("FullHeusler").className += " clicked-button"
+			}
+			
+			if (structure == "C1B" && clickedStructures[1] == "C1B") {
+				clickedStructures[1] = "";
+				document.getElementById("HalfHeusler").className =
+				document.getElementById("HalfHeusler").className.replace( /(?:^|\s)clicked-button(?!\S)/g , '' )
+			} else if (structure == "C1B" && clickedStructures[1] == "") {
+				clickedStructures[1] = "C1B";
+				document.getElementById("HalfHeusler").className += " clicked-button"
+			}
+			
+			if (structure == "Xa" && clickedStructures[2] == "Xa") {
+				clickedStructures[2] = "";
+				document.getElementById("InverseHeusler").className =
+				document.getElementById("InverseHeusler").className.replace( /(?:^|\s)clicked-button(?!\S)/g , '' )
+			} else if (structure == "Xa" && clickedStructures[2] == "") {
+				clickedStructures[2] = "Xa";
+				document.getElementById("InverseHeusler").className += " clicked-button"
+			}
+			
+			
+			getResults()
+			
+		}
+		
+		var stableClicked = false;
+		
+		function stableSearch() {
+			clearCompounds();
+			stableClicked = !stableClicked
+			
+			if (stableClicked) {
+				document.getElementById("stable").className += " clicked-button"
+			} else {
+				document.getElementById("stable").className =
+				document.getElementById("stable").className.replace( /(?:^|\s)clicked-button(?!\S)/g , '' )
+			}
+			
+			getResults()
+		
+		}
+		
+		//For the scrollable table
+		var $table = $('table.scroll'),
+			$bodyCells = $table.find('tbody tr:first').children(),
+			colWidth;
+
+		// Adjust the width of thead cells when window resizes
+		$(window).resize(function() {
+			// Get the tbody columns width array
+			colWidth = $bodyCells.map(function() {
+				return $(this).width();
+			}).get();
+			
+			// Set the width of thead columns
+			$table.find('thead tr').children().each(function(i, v) {
+				$(v).width(colWidth[i]);
+			});    
+		}).resize(); // Trigger resize handler
+		
+	</script>
+		<script>
+	(function (window, document) {
+		'use strict';
+
+		// Enable drop-down menus in Pure
+		// Inspired by YUI3 gallery-simple-menu by Julien LeComte
+		// [https://github.com/yui/yui3-gallery/blob/master/src/gallery-simple-menu/js/simple-menu.js]
+
+		function PureDropdown(dropdownParent) {
+
+			var PREFIX = 'pure-',
+				ACTIVE_CLASS_NAME = PREFIX + 'menu-active',
+				ARIA_ROLE = 'role',
+				ARIA_HIDDEN = 'aria-hidden',
+				MENU_OPEN = 0,
+				MENU_CLOSED = 1,
+				MENU_PARENT_CLASS_NAME = 'pure-menu-has-children',
+				MENU_ACTIVE_SELECTOR = '.pure-menu-active',
+				MENU_LINK_SELECTOR = '.pure-menu-link',
+				MENU_SELECTOR = '.pure-menu-children',
+				DISMISS_EVENT = (window.hasOwnProperty &&
+					window.hasOwnProperty('ontouchstart')) ?
+						'touchstart' : 'mousedown',
+
+				ARROW_KEYS_ENABLED = true,
+
+				ddm = this; // drop down menu
+
+				this._state = MENU_CLOSED;
+
+				this.show = function () {
+					if (this._state !== MENU_OPEN) {
+						this._dropdownParent.classList.add(ACTIVE_CLASS_NAME);
+						this._menu.setAttribute(ARIA_HIDDEN, false);
+						this._state = MENU_OPEN;
+					}
+				};
+
+				this.hide = function () {
+					if (this._state !== MENU_CLOSED) {
+						this._dropdownParent.classList.remove(ACTIVE_CLASS_NAME);
+						this._menu.setAttribute(ARIA_HIDDEN, true);
+						this._link.focus();
+						this._state = MENU_CLOSED;
+					}
+				};
+
+				this.toggle = function () {
+					this[this._state === MENU_CLOSED ? 'show' : 'hide']();
+				};
+
+				this.halt = function (e) {
+					e.stopPropagation();
+					e.preventDefault();
+				};
+
+				this._dropdownParent = dropdownParent;
+				this._link = this._dropdownParent.querySelector(MENU_LINK_SELECTOR);
+				this._menu = this._dropdownParent.querySelector(MENU_SELECTOR);
+				this._firstMenuLink = this._menu.querySelector(MENU_LINK_SELECTOR);
+
+				// Set ARIA attributes
+				this._link.setAttribute('aria-haspopup', 'true');
+				this._menu.setAttribute(ARIA_ROLE, 'menu');
+				this._menu.setAttribute('aria-labelledby', this._link.getAttribute('id'));
+				this._menu.setAttribute('aria-hidden', 'true');
+				[].forEach.call(
+					this._menu.querySelectorAll('li'),
+					function(el){
+						el.setAttribute(ARIA_ROLE, 'presentation');
+					}
+				);
+				[].forEach.call(
+					this._menu.querySelectorAll('a'),
+					function(el){
+						el.setAttribute(ARIA_ROLE, 'menuitem');
+					}
+				);
+
+				// Toggle on click
+				this._link.addEventListener('click', function (e) {
+					e.stopPropagation();
+					e.preventDefault();
+					ddm.toggle();
+				});
+
+				// Keyboard navigation
+				document.addEventListener('keydown', function (e) {
+					var currentLink,
+						previousSibling,
+						nextSibling,
+						previousLink,
+						nextLink;
+
+					// if the menu isn't active, ignore
+					if (ddm._state !== MENU_OPEN) {
+						return;
+					}
+
+					// if the menu is the parent of an open, active submenu, ignore
+					if (ddm._menu.querySelector(MENU_ACTIVE_SELECTOR)) {
+						return;
+					}
+
+					currentLink = ddm._menu.querySelector(':focus');
+
+					// Dismiss an open menu on ESC
+					if (e.keyCode === 27) {
+						/* Esc */
+						ddm.halt(e);
+						ddm.hide();
+					}
+					// Go to the next link on down arrow
+					else if (ARROW_KEYS_ENABLED && e.keyCode === 40) {
+						/* Down arrow */
+						ddm.halt(e);
+						// get the nextSibling (an LI) of the current link's LI
+						nextSibling = (currentLink) ? currentLink.parentNode.nextSibling : null;
+						// if the nextSibling is a text node (not an element), go to the next one
+						while (nextSibling && nextSibling.nodeType !== 1) {
+							nextSibling = nextSibling.nextSibling;
+						}
+						nextLink = (nextSibling) ? nextSibling.querySelector('.pure-menu-link') : null;
+						// if there is no currently focused link, focus the first one
+						if (!currentLink) {
+							ddm._menu.querySelector('.pure-menu-link').focus();
+						}
+						else if (nextLink) {
+							nextLink.focus();
+						}
+					}
+					// Go to the previous link on up arrow
+					else if (ARROW_KEYS_ENABLED && e.keyCode === 38) {
+						/* Up arrow */
+						ddm.halt(e);
+						// get the currently focused link
+						previousSibling = (currentLink) ? currentLink.parentNode.previousSibling : null;
+						while (previousSibling && previousSibling.nodeType !== 1) {
+							previousSibling = previousSibling.previousSibling;
+						}
+						previousLink = (previousSibling) ? previousSibling.querySelector('.pure-menu-link') : null;
+						// if there is no currently focused link, focus the last link
+						if (!currentLink) {
+							ddm._menu.querySelector('.pure-menu-item:last-child .pure-menu-link').focus();
+						}
+						// else if there is a previous item, go to the previous item
+						else if (previousLink) {
+							previousLink.focus();
+						}
+					}
+				});
+
+				// Dismiss an open menu on outside event
+				document.addEventListener(DISMISS_EVENT, function (e) {
+					var target = e.target;
+					if (target !== ddm._link && !ddm._menu.contains(target)) {
+						ddm.hide();
+						ddm._link.blur();
+					}
+				});
+
+		}
+
+		function initDropdowns() {
+			var dropdownParents = document.querySelectorAll('.pure-menu-has-children');
+			for (var i = 0; i < dropdownParents.length; i++) {
+				var ddm = new PureDropdown(dropdownParents[i]);
+			}
+		}
+
+		initDropdowns();
+
+	}(this, this.document));
+	</script>
+	</body>
+</html>

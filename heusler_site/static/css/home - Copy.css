@@ -1,0 +1,57 @@
+h1 {
+	background-color: #990000;
+	color:white;
+	text-align: center;
+	margin:0em;
+	padding:1em;
+}
+
+
+.pure-menu{
+	text-align:center;
+	padding:1%;
+	/*background-color:#cccccc;*/
+	color:white;
+}
+
+.jumbotron {
+  background-image:url('http://goo.gl/04j7Nn');
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.jumbotron .container {
+  position: relative;
+  top:100px;
+}
+
+.jumbotron h1 {
+  color: #fff;
+  font-size: 48px;  
+  font-family: 'Shift', sans-serif;
+  font-weight: bold;
+}
+
+.jumbotron p {
+  font-size: 20px;
+  color: #fff;
+}
+
+.learn-more {
+  background-color: #f7f7f7;
+}
+
+.learn-more h3 {
+  font-family: 'Shift', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.learn-more a {
+  color: #00b0ff;
+}
+
+footer {
+	text-align: center;
+}
